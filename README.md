@@ -3,7 +3,7 @@
 </head>
 <body>
 	<p align="center">
-  <img src="logopet.png" width="150" title="Web Pet">
+  <img src="./src/assets/logopet.png" width="150" title="Web Pet">
 </p>
 <div>
 
