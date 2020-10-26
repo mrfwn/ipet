@@ -1,5 +1,5 @@
 <head>
-	<h1>  Open Event Web</h1>
+	<h1> Web Pet</h1>
 </head>
 <body>
 	<p align="center">
