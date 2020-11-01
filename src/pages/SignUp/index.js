@@ -1,13 +1,11 @@
 import React, { useCallback, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { FiLogIn } from 'react-icons/fi';
-import { useAuth } from '../../hooks/auth';
+import { FiArrowLeft } from 'react-icons/fi';
 import { useToast } from '../../hooks/toast';
-
+import api from '../../services/api';
 import { Container, Content, AnimationContainer, Background } from './styles';
 
 const SignIn = () => {
-  const { signIn } = useAuth();
   const { addToast } = useToast();
   const history = useHistory();
   const [email, setEmail] = useState('');
@@ -17,25 +15,31 @@ const SignIn = () => {
     async (e) => {
       e.preventDefault();
       try {
-        await signIn({ email, password });
+        await api.post('/users', { email, password });
         history.push('/');
+        addToast({
+          type: 'success',
+          title: 'Cadastro realizado!',
+          description: 'Você já pode fazer seu logon no GoBarber!',
+        });
       } catch (err) {
         addToast({
           type: 'success',
-          title: 'Erro na autenticação',
-          description: 'Ocorreu um erro ao fazer login, cheque as credenciais',
+          title: 'Erro no cadastro',
+          description: 'Ocorreu um erro ao fazer cadastro, tente novamente.',
         });
       }
     },
-    [signIn, addToast, history, email, password]
+    [addToast, history, email, password]
   );
 
   return (
     <Container>
+      <Background />
       <Content>
         <AnimationContainer>
           <form onSubmit={handleSubmit}>
-            <h1>Faça seu Login</h1>
+            <h1>Faça seu Cadastro</h1>
             <input
               type="text"
               placeholder="E-mail"
@@ -46,15 +50,14 @@ const SignIn = () => {
               placeholder="Senha"
               onChange={(e) => setPassword(e.target.value)}
             />
-            <button type="submit">Entrar</button>
+            <button type="submit">Cadastrar</button>
           </form>
-          <Link to="/signup">
-            <FiLogIn />
-            Criar conta
+          <Link to="/">
+            <FiArrowLeft />
+            Voltar para logon
           </Link>
         </AnimationContainer>
       </Content>
-      <Background />
     </Container>
   );
 };

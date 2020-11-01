@@ -25,7 +25,8 @@ const Home = () => {
   }, [handleLoad]);
   return (
     <Container>
-      <h1>{user.id}</h1>
+      <h1>ID:{user.id}</h1>
+      <h1>Name:{user.displayName}</h1>
     </Container>
   );
 };

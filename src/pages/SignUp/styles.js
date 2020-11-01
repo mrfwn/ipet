@@ -11,7 +11,7 @@ export const Container = styled.div`
 const appearFromLeft = keyframes`
   from {
     opacity: 0;
-    transform: translateX(-50px);
+    transform: translateX(50px);
   }
   to {
     opacity: 1;
@@ -97,7 +97,7 @@ export const AnimationContainer = styled.div`
   > a {
     color: #ff9000;
     display: block;
-    margin-top: 18px;
+    margin-top: 24px;
     text-decoration: none;
     transition: color 0.2s;
 

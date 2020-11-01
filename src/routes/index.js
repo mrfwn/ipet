@@ -1,7 +1,8 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-// import Route from './Route';
+import { BrowserRouter, Switch } from 'react-router-dom';
+import Route from './Route';
 import SignIn from '../pages/SignIn';
+import SignUp from '../pages/SignUp';
 import Home from '../pages/Home';
 
 export default function Routes() {
@@ -9,7 +10,8 @@ export default function Routes() {
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={SignIn} />
-        <Route path="/home" component={Home} />
+        <Route path="/signup" component={SignUp} />
+        <Route path="/home" component={Home} isPrivate />
       </Switch>
     </BrowserRouter>
   );
