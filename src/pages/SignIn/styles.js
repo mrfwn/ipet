@@ -70,12 +70,13 @@ export const AnimationContainer = styled.div`
 
     input {
       width: 100%;
-      border: 0;
+      border: 2px solid #eee;
       height: 50px;
       border-radius: 10px;
       font-size: 1.2em;
       padding-left: 20px;
       margin: 5px 5px;
+      border-radius: 10px;
     }
 
     button {
@@ -86,6 +87,7 @@ export const AnimationContainer = styled.div`
       padding: 0 16px;
       color: #312e38;
       width: 100%;
+      font-size: 18px;
       font-weight: 500;
       margin-top: 18px;
       transition: background-color 0.2s;

@@ -41,5 +41,7 @@ module.exports = {
     'react/state-in-constructor': [1, 'never'],
     'react/jsx-props-no-spreading': 'off',
     'react/static-property-placement': [1],
+    'jsx-a11y/no-noninteractive-element-interactions': 'off',
+    'jsx-a11y/click-events-have-key-events': 'off',
   },
 };

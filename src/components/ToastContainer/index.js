@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { useTransition } from 'react-spring';
-// eslint-disable-next-line import/no-cycle
 import Toast from './Toast';
 import { Container } from './styles';
 

@@ -5,22 +5,23 @@ import { useToast } from '../../hooks/toast';
 import api from '../../services/api';
 import { Container, Content, AnimationContainer, Background } from './styles';
 
-const SignIn = () => {
+const SignUp = () => {
   const { addToast } = useToast();
   const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
 
   const handleSubmit = useCallback(
     async (e) => {
       e.preventDefault();
       try {
-        await api.post('/users', { email, password });
+        await api.post('/users', { email, password, name });
         history.push('/');
         addToast({
           type: 'success',
           title: 'Cadastro realizado!',
-          description: 'Você já pode fazer seu logon no GoBarber!',
+          description: 'Você já pode fazer seu logon no WebPet!',
         });
       } catch (err) {
         addToast({
@@ -30,7 +31,7 @@ const SignIn = () => {
         });
       }
     },
-    [addToast, history, email, password]
+    [addToast, history, email, password, name]
   );
 
   return (
@@ -40,6 +41,11 @@ const SignIn = () => {
         <AnimationContainer>
           <form onSubmit={handleSubmit}>
             <h1>Faça seu Cadastro</h1>
+            <input
+              type="text"
+              placeholder="Nome"
+              onChange={(e) => setName(e.target.value)}
+            />
             <input
               type="text"
               placeholder="E-mail"
@@ -62,4 +68,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;
