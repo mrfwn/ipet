@@ -96,11 +96,15 @@ const Home = () => {
     }
   }, [gallery, selectImage]);
 
-  const handleGeneratePet = useCallback(() => {
-    alert('Vamos gerar um PET!!!');
+  const handleGeneratePet = useCallback(async () => {
+    const imagesIds = [];
+    image1 && imagesIds.push(image1.name);
+    image2 && imagesIds.push(image2.name);
+    image3 && imagesIds.push(image3.name);
+    const response = await api.post('pets', imagesIds);
 
-    setPet(image2);
-  }, [image2]);
+    setPet(response.data);
+  }, [image1, image2, image3]);
   useEffect(() => {
     api.get('images').then((response) => {
       setGallery(response.data);
