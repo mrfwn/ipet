@@ -15,10 +15,10 @@ import {
 } from './styles';
 import { useAuth } from '../../hooks/auth';
 import { useToast } from '../../hooks/toast';
-import logoImg from '../../assets/logopet.jpg';
+import logoImg from '../../assets/fluffymonster.png';
 import api from '../../services/api';
 // import apiPy from '../../services/apiPy';
-import arrowBone from '../../assets/arrow.jpg';
+import arrowBone from '../../assets/arrow.png';
 import petBase from '../../assets/petBase.gif';
 
 const Home = () => {
@@ -114,7 +114,7 @@ const Home = () => {
     <Container>
       <Header>
         <HeaderContent>
-          <img src={logoImg} alt="WebPet" />
+          <img src={logoImg} alt="Cronemberguizador" />
           <Profile>
             <div>
               <span>Bem-vindo,</span>
@@ -218,13 +218,13 @@ const Home = () => {
           type="button"
           onClick={handleGeneratePet}
         >
-          <img src={arrowBone} alt="WebPet" />
+          <img src={arrowBone} alt="Cronemberguizador" />
         </button>
         <div>
           {pet ? (
             <img src={pet.path_url} alt="pet" />
           ) : (
-            <img src={petBase} alt="WebPet" />
+            <img src={petBase} alt="Cronemberguizador" />
           )}
         </div>
       </Content>
@@ -269,7 +269,7 @@ const Home = () => {
                     <img
                       style={{ width: '300px', height: '300px' }}
                       src={gallery[selectImage].path_url}
-                      alt="WebPet"
+                      alt="Cronemberguizador"
                     />
                   )}
                   {selectImage !== gallery.length - 1 ? (

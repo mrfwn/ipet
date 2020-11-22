@@ -52,7 +52,13 @@ export const Profile = styled.div`
     line-height: 24px;
 
     span {
-      color: #000;
+      color: #fff;
+      font-size: large;
+    }
+
+    strong {
+      color: #f8db7e;
+      font-size: large;
     }
 
     a {

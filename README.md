@@ -1,34 +1,38 @@
 <head>
-	<h1> Web Pet</h1>
+	<h1>Cronemberguizador</h1>
 </head>
 <body>
 	<p align="center">
-  <img src="logopet.jpg" width="150" title="Web Pet">
+  <img src="fluffymonster.png" width="150" title="Cronemberguizador">
 </p>
 <div>
 
-  ##  Description:
-   - Web pet is an pet friendly project, where will you create your pet identity.
+## Description:
 
-  ##  Running:
-   - Clone code - "git clone url_repository" .
-   - Running "yarn" in path .
-   - For better structuring of the code used, Eslint, Editor config and Prittier, installation of plugins in Vscode.
+- The Cronemberguizador is a fun way to turn your photos into "dogmonster" versions of yourself. Using starGAN, we built a "DogMonstrifier", combining your photo with images of dogs and generating completely absurd and surprising results. Try it now and see what kind of monster you can become.
 
-   - run "yarn start" in terminal.
+## Running:
 
-   ##  Technologies Used:
-   - React
-   - Axios
-   - Styled components
-   - React Router Dom
-   - Developer:
-        - `Eslint`
-        - `Prittier`
-        - `Editor Config`
+- Clone code - "git clone url_repository" .
+- Running "yarn" in path .
+- For better structuring of the code used, Eslint, Editor config and Prittier, installation of plugins in Vscode.
 
-  ## Features:
-  - Google Login/Create Pet
+- run "yarn start" in terminal.
+
+## Technologies Used:
+
+- React
+- Axios
+- Styled components
+- React Router Dom
+- Developer:
+  - `Eslint`
+  - `Prettier`
+  - `Editor Config`
+
+## Features:
+
+- Google Login/Create Pet
 
 </div>
 

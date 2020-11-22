@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { shade } from 'polished';
-import signInBackgroundImg from '../../assets/logopet.jpg';
+import signInBackgroundImg from '../../assets/fluffymonster.png';
 
 export const Container = styled.div`
   height: 100vh;
@@ -65,6 +65,7 @@ export const AnimationContainer = styled.div`
     align-items: center;
 
     h1 {
+      color: #f8db7e;
       margin-bottom: 24px;
     }
 
