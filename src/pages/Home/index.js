@@ -19,7 +19,7 @@ import logoImg from '../../assets/fluffymonster.png';
 import api from '../../services/api';
 // import apiPy from '../../services/apiPy';
 import arrowBone from '../../assets/arrow.png';
-import petBase from '../../assets/petBase.gif';
+import waiting from '../../assets/waiting.gif';
 
 const Home = () => {
   const { user, signOut } = useAuth();
@@ -128,6 +128,8 @@ const Home = () => {
             <FiPower />
           </button>
         </HeaderContent>
+
+        <h2>Upload your pictures and select one to do the magic ;)</h2>
       </Header>
 
       <Content>
@@ -218,13 +220,13 @@ const Home = () => {
           type="button"
           onClick={handleGeneratePet}
         >
-          <img src={arrowBone} alt="Cronemberguizador" />
+          <img src={arrowBone} alt="arrow" />
         </button>
         <div>
           {pet ? (
             <img src={pet.path_url} alt="pet" />
           ) : (
-            <img src={petBase} alt="Cronemberguizador" />
+            <img src={waiting} alt="waiting" />
           )}
         </div>
       </Content>

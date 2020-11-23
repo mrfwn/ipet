@@ -8,12 +8,22 @@ export const Container = styled.div`
 `;
 
 export const Header = styled.header`
-  padding: 32px 0;
+  display: block;
+  margin-top: 30px;
+  text-align: center;
+
+  h2 {
+    color: #f8db7e;
+    margin-top: 70px;
+  }
 `;
 
 export const HeaderContent = styled.div`
+  background: #9370db;
+  border-radius: 10px;
   max-width: 1120px;
   margin: 0 auto;
+  padding: 1rem;
   display: flex;
   align-items: center;
 
@@ -27,7 +37,7 @@ export const HeaderContent = styled.div`
     border: 0;
 
     svg {
-      color: #999591;
+      color: #5900b2;
       width: 20px;
       height: 20px;
     }
@@ -77,7 +87,7 @@ export const Content = styled.div`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  margin-top: 150px;
+  margin-top: 80px;
 
   img {
     width: 300px;
@@ -90,10 +100,11 @@ export const SelectedImages = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 400px;
+  height: 500px;
+
   button {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
   }
 `;
 
