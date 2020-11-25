@@ -15,9 +15,9 @@ import {
 } from './styles';
 import { useAuth } from '../../hooks/auth';
 import { useToast } from '../../hooks/toast';
-import logoImg from '../../assets/fluffymonster.png';
+import logoMonster from '../../assets/fluffymonster.png';
+import logo from '../../assets/logo.png';
 import api from '../../services/api';
-// import apiPy from '../../services/apiPy';
 import arrowBone from '../../assets/arrow.png';
 import waiting from '../../assets/waiting.gif';
 import loading from '../../assets/loading.gif';
@@ -64,7 +64,7 @@ const Home = () => {
     setSelectButton('');
     setShowGallery(false);
     setPet(waiting);
-  }, [selectButton, selectImage, gallery]);
+  }, [selectButton, selectImage, gallery, setPet]);
 
   const handleAddFile = useCallback(
     (e) => {
@@ -114,7 +114,7 @@ const Home = () => {
       setPet(response.data.path_url);
       setLoading(false);
     });
-  }, [image1, pet]);
+  }, [image1, setPet]);
 
   useEffect(() => {
     api.get('images').then((response) => {
@@ -125,7 +125,7 @@ const Home = () => {
     <Container>
       <Header>
         <HeaderContent>
-          <img src={logoImg} alt="Dogmon" />
+          <img src={logoMonster} alt="Dogmon" />
           <Profile>
             <div>
               <span>Bem-vindo,</span>
@@ -134,6 +134,8 @@ const Home = () => {
               </Link>
             </div>
           </Profile>
+
+          <img src={logo} alt="Dogmon" style={{ margin: '0 auto' }} />
 
           <button type="button" onClick={signOut}>
             <FiPower />
@@ -229,7 +231,7 @@ const Home = () => {
                     <img
                       style={{ width: '300px', height: '300px' }}
                       src={gallery[selectImage].path_url}
-                      alt="Dogmon"
+                      alt="userPicture"
                     />
                   )}
                   {selectImage !== gallery.length - 1 ? (

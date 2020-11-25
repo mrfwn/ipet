@@ -4,6 +4,7 @@ import { FiArrowLeft } from 'react-icons/fi';
 import { useToast } from '../../hooks/toast';
 import api from '../../services/api';
 import { Container, Content, AnimationContainer, Background } from './styles';
+import logo from '../../assets/logo.png';
 
 const SignUp = () => {
   const { addToast } = useToast();
@@ -39,6 +40,8 @@ const SignUp = () => {
       <Background />
       <Content>
         <AnimationContainer>
+          <img src={logo} alt="Dogmon" />
+
           <form onSubmit={handleSubmit}>
             <h1>Faça seu Cadastro</h1>
             <input

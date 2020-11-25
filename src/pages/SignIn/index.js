@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { FiLogIn } from 'react-icons/fi';
 import { useAuth } from '../../hooks/auth';
 import { useToast } from '../../hooks/toast';
+import logo from '../../assets/logo.png';
 
 import { Container, Content, AnimationContainer, Background } from './styles';
 
@@ -34,6 +35,8 @@ const SignIn = () => {
     <Container>
       <Content>
         <AnimationContainer>
+          <img src={logo} alt="Dogmon" />
+
           <form onSubmit={handleSubmit}>
             <h1>Faça seu Login</h1>
             <input

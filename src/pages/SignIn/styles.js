@@ -36,12 +36,18 @@ export const AnimationContainer = styled.div`
   justify-content: center;
   width: 50%;
   animation: ${appearFromLeft} 1s;
+
+  > img {
+    height: 200px;
+  }
+
   div {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+
     a {
       width: 100px;
       height: 100px;
@@ -55,6 +61,7 @@ export const AnimationContainer = styled.div`
       }
     }
   }
+
   form {
     margin: 80px 0;
     width: 340px;

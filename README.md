@@ -3,7 +3,7 @@
 </head>
 <body>
 	<p align="center">
-  <img src="fluffymonster.png" width="150" title="Dogmon">
+  <img src="logo.png" width="150" title="Dogmon">
 </p>
 <div>
 
