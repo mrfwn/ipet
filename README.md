@@ -1,15 +1,15 @@
 <head>
-	<h1>Cronemberguizador</h1>
+	<h1>Dogmon</h1>
 </head>
 <body>
 	<p align="center">
-  <img src="fluffymonster.png" width="150" title="Cronemberguizador">
+  <img src="fluffymonster.png" width="150" title="Dogmon">
 </p>
 <div>
 
 ## Description:
 
-- The Cronemberguizador is a fun way to turn your photos into "dogmonster" versions of yourself. Using starGAN, we built a "DogMonstrifier", combining your photo with images of dogs and generating completely absurd and surprising results. Try it now and see what kind of monster you can become.
+- The Dogmon is a fun way to turn your photos into "dogmonster" versions of yourself. Using starGAN, we built a "DogMonstrifier", combining your photo with images of dogs and generating completely absurd and surprising results. Try it now and see what kind of monster you can become.
 
 ## Running:
 

@@ -86,25 +86,24 @@ export const Content = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  align-self: center;
   align-items: center;
   margin-top: 80px;
 
   img {
-    width: 300px;
-    height: 170px;
+    max-width: 500px;
+    max-height: 500px;
   }
 `;
 
 export const SelectedImages = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   height: 500px;
 
   button {
-    width: 150px;
-    height: 150px;
+    width: 300px;
+    height: 300px;
   }
 `;
 

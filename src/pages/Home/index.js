@@ -20,6 +20,17 @@ import api from '../../services/api';
 // import apiPy from '../../services/apiPy';
 import arrowBone from '../../assets/arrow.png';
 import waiting from '../../assets/waiting.gif';
+import loading from '../../assets/loading.gif';
+
+function useAsyncState(initialValue) {
+  const [value, setValue] = useState(initialValue);
+  const setter = (x) =>
+    new Promise((resolve) => {
+      setValue(x);
+      resolve(x);
+    });
+  return [value, setter];
+}
 
 const Home = () => {
   const { user, signOut } = useAuth();
@@ -27,11 +38,11 @@ const Home = () => {
   const [showGallery, setShowGallery] = useState(false);
   const [gallery, setGallery] = useState([]);
   const [image1, setImage1] = useState();
-  const [image2, setImage2] = useState();
-  const [image3, setImage3] = useState();
   const [selectImage, setSelectImage] = useState();
   const [selectButton, setSelectButton] = useState();
-  const [pet, setPet] = useState();
+  const [pet, setPet] = useAsyncState(waiting);
+  const [isLoading, setLoading] = useState(false);
+
   const match = ['image/jpeg', 'image/png'];
 
   const handleShowGallery = useCallback(
@@ -50,10 +61,9 @@ const Home = () => {
 
   const handleSetImage = useCallback(() => {
     selectButton === 'image1' && setImage1(gallery[selectImage]);
-    selectButton === 'image2' && setImage2(gallery[selectImage]);
-    selectButton === 'image3' && setImage3(gallery[selectImage]);
     setSelectButton('');
     setShowGallery(false);
+    setPet(waiting);
   }, [selectButton, selectImage, gallery]);
 
   const handleAddFile = useCallback(
@@ -96,15 +106,16 @@ const Home = () => {
     }
   }, [gallery, selectImage]);
 
-  const handleGeneratePet = useCallback(async () => {
+  const handleGeneratePet = useCallback(() => {
     const imagesIds = [];
     image1 && imagesIds.push(image1.name);
-    image2 && imagesIds.push(image2.name);
-    image3 && imagesIds.push(image3.name);
-    const response = await api.post('pets', imagesIds);
+    setLoading(true);
+    api.post('pets', imagesIds).then((response) => {
+      setPet(response.data.path_url);
+      setLoading(false);
+    });
+  }, [image1, pet]);
 
-    setPet(response.data);
-  }, [image1, image2, image3]);
   useEffect(() => {
     api.get('images').then((response) => {
       setGallery(response.data);
@@ -114,7 +125,7 @@ const Home = () => {
     <Container>
       <Header>
         <HeaderContent>
-          <img src={logoImg} alt="Cronemberguizador" />
+          <img src={logoImg} alt="Dogmon" />
           <Profile>
             <div>
               <span>Bem-vindo,</span>
@@ -129,7 +140,10 @@ const Home = () => {
           </button>
         </HeaderContent>
 
-        <h2>Upload your pictures and select one to do the magic ;)</h2>
+        <h2>
+          Faça o upload de sua foto e clique na seta para ver a mágica acontecer
+          ;)
+        </h2>
       </Header>
 
       <Content>
@@ -137,8 +151,6 @@ const Home = () => {
           {image1 ? (
             <img
               style={{
-                width: '100px',
-                height: '100px',
                 border: '5px solid #ff9000',
                 cursor: 'pointer',
               }}
@@ -157,77 +169,23 @@ const Home = () => {
               type="button"
               onClick={() => handleShowGallery('image1')}
             >
-              <FcPicture size={32} />
-            </button>
-          )}
-
-          {image2 ? (
-            <img
-              style={{
-                width: '100px',
-                height: '100px',
-                border: '5px solid #ff9000',
-                cursor: 'pointer',
-              }}
-              src={image2.path_url}
-              onClick={() => handleShowGallery('image2')}
-              alt="foto2"
-            />
-          ) : (
-            <button
-              style={{
-                borderWidth: '5px',
-                borderStyle: 'dashed',
-                borderColor: '#ff9000',
-                background: 'transparent',
-              }}
-              type="button"
-              onClick={() => handleShowGallery('image2')}
-            >
-              <FcPicture size={32} />
-            </button>
-          )}
-
-          {image3 ? (
-            <img
-              style={{
-                width: '100px',
-                height: '100px',
-                border: '5px solid #ff9000',
-                cursor: 'pointer',
-              }}
-              src={image3.path_url}
-              onClick={() => handleShowGallery('image3')}
-              alt="foto3"
-            />
-          ) : (
-            <button
-              style={{
-                borderWidth: '5px',
-                borderStyle: 'dashed',
-                borderColor: '#ff9000',
-                background: 'transparent',
-              }}
-              type="button"
-              onClick={() => handleShowGallery('image3')}
-            >
-              <FcPicture size={32} />
+              <FcPicture size={50} />
             </button>
           )}
         </SelectedImages>
-        <button
-          style={{ border: '0', background: 'transparent' }}
-          type="button"
-          onClick={handleGeneratePet}
-        >
-          <img src={arrowBone} alt="arrow" />
-        </button>
+        {isLoading ? (
+          <img src={loading} alt="loading" style={{ margin: '0 auto' }} />
+        ) : (
+          <button
+            style={{ border: '0', background: 'transparent', margin: '0 20px' }}
+            type="button"
+            onClick={handleGeneratePet}
+          >
+            <img src={arrowBone} alt="arrow" />
+          </button>
+        )}
         <div>
-          {pet ? (
-            <img src={pet.path_url} alt="pet" />
-          ) : (
-            <img src={waiting} alt="waiting" />
-          )}
+          <img src={pet} alt="pet" />
         </div>
       </Content>
       <ModalGallery isOpen={showGallery}>
@@ -271,7 +229,7 @@ const Home = () => {
                     <img
                       style={{ width: '300px', height: '300px' }}
                       src={gallery[selectImage].path_url}
-                      alt="Cronemberguizador"
+                      alt="Dogmon"
                     />
                   )}
                   {selectImage !== gallery.length - 1 ? (
